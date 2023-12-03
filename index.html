@@ -47,22 +47,28 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: rgba(0, 0, 0, 0.8);
       justify-content: center;
       align-items: center;
       z-index: 999;
+      color: #fff;
+    }
+
+    .loading-bar-container {
+      width: 60%;
+      background-color: #333;
+      padding: 10px;
+      border-radius: 8px;
     }
 
     .loading-bar {
-      width: 50%;
+      width: 0;
       height: 20px;
       background-color: #ffc107;
-      margin: 0 auto;
       border-radius: 4px;
     }
 
     #loading-message {
-      color: #fff;
       margin-top: 1rem;
     }
   </style>
@@ -87,7 +93,9 @@
 
   <!-- Loading Popup -->
   <div id="loading-popup">
-    <div class="loading-bar"></div>
+    <div class="loading-bar-container">
+      <div class="loading-bar"></div>
+    </div>
     <div id="loading-message"></div>
   </div>
 
@@ -95,7 +103,7 @@
   <script>
     function simulateLoading() {
       document.getElementById('loading-popup').style.display = 'flex';
-      document.getElementById('loading-message').innerText = 'Loading...';
+      document.getElementById('loading-message').innerText = 'Starting In...';
 
       // Simulate loading with progress bar
       var progressBar = document.querySelector('.loading-bar');
@@ -136,7 +144,7 @@
       var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
       // Display the countdown
-      document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+      document.getElementById("countdown").innerHTML = "Starting In: " + days + "d " + hours + "h "
       + minutes + "m " + seconds + "s ";
 
       // If the countdown is over, display a message
