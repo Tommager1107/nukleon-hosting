@@ -92,6 +92,23 @@
       margin-top: 0.5rem;
       font-weight: bold;
     }
+
+    /* Console Section */
+    .console {
+      background-color: #222;
+      color: #fff;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+
+    #console-input {
+      width: 80%;
+      padding: 0.5rem;
+    }
+
+    #console-output {
+      margin-top: 1rem;
+    }
   </style>
 </head>
 <body>
@@ -131,6 +148,13 @@
       <img src="https://cdn.discordapp.com/attachments/1074785256378474567/1179305917485957161/33d8f2d2-b07e-4cd3-90c4-d91173a92050.gif?ex=65794d39&is=6566d839&hm=fe791f9ea376d489329f82bb4249f3fbf2773a53ea72882847a814e7d322180f&" alt="HTS Mafia">
       <div class="sponsor-name">HTS Mafia</div>
     </div>
+  </section>
+
+  <!-- Console Section -->
+  <section class="console">
+    <h2>CONSOLE</h2>
+    <input type="text" id="console-input" placeholder="Type a command...">
+    <div id="console-output"></div>
   </section>
 
   <!-- Panel Popup -->
@@ -187,6 +211,29 @@
         document.getElementById("countdown").innerHTML = "EXPIRED";
       }
     }, 1000);
+  </script>
+
+  <!-- Console Script -->
+  <script>
+    document.getElementById("console-input").addEventListener("keyup", function(event) {
+      if (event.key === "Enter") {
+        handleConsoleCommand();
+      }
+    });
+
+    function handleConsoleCommand() {
+      var consoleInput = document.getElementById("console-input").value.toLowerCase();
+      var consoleOutput = document.getElementById("console-output");
+
+      if (consoleInput === "nukleon -i -f -src") {
+        consoleOutput.innerText = "Source Code is not available.";
+      } else {
+        consoleOutput.innerText = "Command not recognized.";
+      }
+
+      // Clear the input field
+      document.getElementById("console-input").value = "";
+    }
   </script>
 
 </body>
